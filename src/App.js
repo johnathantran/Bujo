@@ -9,11 +9,10 @@ import About from './components/pages/About';
 import axios from 'axios';
 import './App.css';
 
-
 class App extends Component {
   state = {
     todos: [],
-    selectID: null
+    selectID: null,
   }
 
   componentDidMount() {
@@ -21,12 +20,24 @@ class App extends Component {
       .then(res => this.setState( { todos: res.data })) 
   }
 
-  // select ID
-  selectID = (id) => {
+  // store ID of chosen todo item in state
+  chooseTodoItem = (id) => {
     this.setState({
       selectID: id
     });
     console.log(id + ' selected');
+    
+    this.setState({todos: this.state.todos.map(todo => {
+        if (todo.id === this.state.selectID) {
+          // toggle todo.isSelected
+          todo.isSelected = !todo.isSelected;
+          console.log("Selected: " + todo.isSelected);
+        }
+        return todo;
+      })
+    });
+
+    return id;
   };
 
 
@@ -40,6 +51,18 @@ class App extends Component {
     }) });
   }
   
+  // mark migrated
+  markMigrated = (id) => {
+    console.log("Item " + id + " migrated");
+  }
+
+  // mark scheduled
+  markScheduled = (id) => {
+    console.log("Item " + id + " scheduled");
+
+    // add scheduled date to the todo item
+  }
+
   // delete todo
   delTodo = (id) => {
     axios.delete(`http://jsonplaceholder.typicode.com/todos/${id}`)
@@ -58,21 +81,35 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.todos);
+    //console.log(this.state.todos);
+    
     return (
       <Router>
         <div className="App">
           <div className="container">
             <Header />
-            <ActionBar />
+            <ActionBar
+              todos={this.state.todos}
+              selectID={this.state.selectID}
 
+              // button functions
+              markComplete={this.markComplete}
+              markMigrated={this.markMigrated}
+              markScheduled={this.markScheduled}
+              delTodo={this.delTodo}
+            />
             
               <Route exact path="/" render={props => (
                 <React.Fragment>
                   <AddTodo addTodo={this.addTodo} />
                   <div id="todoItemsContainer">
-                    <Todos todos={this.state.todos} markComplete={this.markComplete} 
-                    delTodo={this.delTodo} />
+
+                    <Todos
+                      chooseTodoItem={this.chooseTodoItem}
+                      todos={this.state.todos}
+                      selectID={this.state.selectID}
+                      markComplete={this.markComplete} 
+                    />
                   </div>
                 </React.Fragment>
               )} />

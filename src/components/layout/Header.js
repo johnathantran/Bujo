@@ -5,9 +5,18 @@ import { Link } from 'react-router-dom';
 function Header() {
     return (
         <header style={headerStyle}>
-            <h1>TodoList</h1>
-            <Link style={linkStyle} to="/">Home</Link> | <Link
-            style={linkStyle} to="/about">About</Link>
+            <h1>Bujo Online</h1>
+            <h2>Weekly Spread</h2>
+            <Link style={linkStyle} to="/">Home</Link> |
+            <Link style={linkStyle} to="/about">About</Link> |
+            <Link style={linkStyle} to="/sunday">Sunday</Link> |
+            <Link style={linkStyle} to="/monday">Monday</Link> |
+            <Link style={linkStyle} to="/tuesday">Tuesday</Link> |
+            <Link style={linkStyle} to="/wednesday">Wednesday</Link> |
+            <Link style={linkStyle} to="/thursday">Thursday</Link> |
+            <Link style={linkStyle} to="/friday">Friday</Link> |
+            <Link style={linkStyle} to="/saturday">Saturday</Link>
+            
         </header>
     )
 }
