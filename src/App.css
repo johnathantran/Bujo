@@ -3,6 +3,10 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.4;
+  background-color: #363640;
+  color: white;
+  font-family: 'Montserrat','sans-serif';
+  font-size: 11pt;
 }
 
 a {
@@ -26,7 +30,6 @@ a {
   justify-content: center;
   align-items: center;
   height: 50px;
-  border: 3px solid gray; 
 }
 
 .todoItem {
@@ -38,14 +41,66 @@ a {
   margin: auto;
 }
 
+/* Add Todo Form CSS */
+#addTodoForm {
+  margin-bottom: 15px;
+}
+
+#addTodo {
+  display: flex;
+  flex: 10;
+  padding: '5px';
+  margin-right: 5px;
+  margin-bottom: 8px;
+  width: 100%;
+  height: 33px;
+}
+
+#addTodoFormInnerContainer {
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.selectItemType {
+  font-size: 10pt;
+  width: 40%;
+  height:auto;
+}
+
+.submitBtn {
+  height: 33px;
+  width: 70px;
+  cursor: pointer;
+  font-size: 11pt;
+  vertical-align: middle;
+  padding-top: 5px;
+  font-weight: bold;
+  margin-left: 5px;
+}
+/* end */
+
 #todoItemsContainer {
   margin: auto;
-  width: 50%;
-  border: 3px solid gray;
-  padding: 10px;
+  background-color: #fefefe;
   box-shadow: inset 0 1px 0 #80B0FB;
+  opacity: 0.95;
+  border-radius: 5px;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%; /* Could be more or less, depending on screen size */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-top: 30px;
   margin-bottom: 50px;
+  max-height: 60%;
+  height: 710px;
+}
+
+#scrollContainer {
+  height: 80%;
+  overflow: auto;
+  overflow-y: scroll;
 }
 
 .actionBtn {
@@ -63,29 +118,28 @@ a {
   background: #4C8FFB;
   border: 1px #3079ED solid;
   box-shadow: inset 0 1px 0 #80B0FB;
-  /*
-  border-radius: 25px;
-  border: 1px solid #73AD21;
-  padding: 10px;
-  margin: 20px;
-  width: 150px;
-  height: 40px;
-  */
 }
 
 .delBtn {
   background-color: blue;
 }
 
-.submitBtn {
-  display: inline-block;
-  border: 'none';
-  background: #555;
-  color: #fff;
-  padding: 7px 20px;
-  cursor: pointer;
-}
 
-.btn:hover {
-  background: #666;
+::-webkit-scrollbar {
+  width: 6px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-border-radius: 11px;
+  border-radius: 11px;
+  background-color: rgb(158, 158, 158);
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+ 
+  background:rgb(226, 226, 226);
+  /*border: 0.1px solid rgb(160, 160, 160);*/
+}
+::-webkit-scrollbar-thumb:window-inactive {
+background: rgb(226, 226, 226);
 }

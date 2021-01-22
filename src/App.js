@@ -9,6 +9,7 @@ import About from './components/pages/About';
 import axios from 'axios';
 import './App.css';
 
+// mark a card class to render each weekday
 class App extends Component {
   state = {
     todos: [],
@@ -100,16 +101,18 @@ class App extends Component {
             />
             
               <Route exact path="/" render={props => (
-                <React.Fragment>
-                  <AddTodo addTodo={this.addTodo} />
+                <React.Fragment>         
                   <div id="todoItemsContainer">
-
-                    <Todos
-                      chooseTodoItem={this.chooseTodoItem}
-                      todos={this.state.todos}
-                      selectID={this.state.selectID}
-                      markComplete={this.markComplete} 
-                    />
+                    <h3 style={{color: 'black'}}> Sunday </h3>
+                    <AddTodo addTodo={this.addTodo} />
+                    <div id="scrollContainer">
+                      <Todos
+                        chooseTodoItem={this.chooseTodoItem}
+                        todos={this.state.todos}
+                        selectID={this.state.selectID}
+                        markComplete={this.markComplete} 
+                      />
+                    </div>
                   </div>
                 </React.Fragment>
               )} />

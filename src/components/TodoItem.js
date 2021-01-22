@@ -20,18 +20,27 @@ export class TodoItem extends Component {
         if (id === selectID){
             return {
                 padding: '10px',
-                borderBottom: '1px #ccc dotted',
                 textDecoration: this.props.todo.completed ?
                 'line-through' : 'none',
-                background: 'red'
+                //background: '#ffc107',
+                //background: '#17a2b8',
+                borderRadius: '5px',
+                border: '2px solid #17a2b8',
+                color: 'black',
+                marginTop: '5px',
+                marginBottom: '5px'
             }
         } 
         return {
             padding: '10px',
-            borderBottom: '1px #ccc dotted',
             textDecoration: this.props.todo.completed ?
             'line-through' : 'none',
-            background: '#f4f4f4'
+            background: '#fefefe',
+            opacity: 0.9,
+            color: 'black',
+            borderRadius: '5px',
+            margin: '3px',
+            border: '1px solid #cccccc'
         }
     }
 
@@ -69,7 +78,7 @@ export class TodoItem extends Component {
         // destructuring
         // getting props from Todos Component (up the ladder)
         const { id, title } = this.props.todo;
-        let { chooseTodoItem, selectID, markComplete } = this.props;
+        let { chooseTodoItem, selectID } = this.props;
         // const taskState = 
         return (
             
