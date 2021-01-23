@@ -11,8 +11,27 @@ export class AddTodo extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
+
         this.props.addTodo(this.state.title);
         this.setState({ title: '' });
+        
+        /*
+        // if note
+        this.props.addNote(this.state.title);
+        this.setState({ title: '' });
+
+        // if event
+        this.props.addEvent(this.state.title);
+        this.setState({ title: '' });
+
+        // if priority
+        this.props.addPriority(this.state.title);
+        this.setState({ title: '' });
+
+        // if inspo
+        this.props.addInspo(this.state.title);
+        this.setState({ title: '' });
+        */
     }
 
     onChange = (e) => this.setState({ [e.target.name]: e.target.value });
@@ -23,9 +42,10 @@ export class AddTodo extends Component {
     }
 
     render() {
+        
         return (
             <form onSubmit={this.onSubmit} id="addTodoForm">
-                
+                    
                     <input
                         type="text"
                         name="title"

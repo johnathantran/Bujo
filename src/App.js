@@ -81,6 +81,26 @@ class App extends Component {
         [...this.state.todos, res.data]} ));
   }
 
+  // add event
+  addEvent = (title) => {
+    console.log("Event added: " + title);
+  }
+
+  // add note
+  addNote = (title) => {
+    console.log("Note added: " + title);
+  }
+
+  // add priority
+  addPriority = (title) => {
+    console.log("Priority added: " + title);
+  }
+
+  // add inspo
+  addInspo = (title) => {
+    console.log("Inspo added: " + title);
+  }
+
   render() {
     //console.log(this.state.todos);
     
@@ -104,13 +124,22 @@ class App extends Component {
                 <React.Fragment>         
                   <div id="todoItemsContainer">
                     <h3 style={{color: 'black'}}> Sunday </h3>
-                    <AddTodo addTodo={this.addTodo} />
+
+                    <AddTodo
+                      addTodo={this.addTodo}
+                      addNote={this.addNote}
+                      addEvent={this.addEvent}
+                      addPriority={this.addPriority}
+                      addInspo={this.addInspo}
+                    />
+
                     <div id="scrollContainer">
                       <Todos
                         chooseTodoItem={this.chooseTodoItem}
                         todos={this.state.todos}
                         selectID={this.state.selectID}
                         markComplete={this.markComplete} 
+                        delTodo={this.delTodo}
                       />
                     </div>
                   </div>

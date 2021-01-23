@@ -73,26 +73,39 @@ export class TodoItem extends Component {
         return (symbol);
     }
 
+    // if an item is completed, check it on page load
+    getChecked = (id, markComplete) => {
+        if (this.props.todo.completed === true) {
+            return (
+                <input type="checkbox" className="checkbox"
+                    onChange={markComplete.bind(this, id)} checked/>
+            )
+        } else {
+            return (
+                <input type="checkbox" className="checkbox"
+                onChange={markComplete.bind(this, id)} />
+            )
+        }
+    }
+
     render() {
 
         // destructuring
         // getting props from Todos Component (up the ladder)
         const { id, title } = this.props.todo;
-        let { chooseTodoItem, selectID } = this.props;
+        let { chooseTodoItem, delTodo, selectID, markComplete } = this.props;
         // const taskState = 
         return (
             
             <div className="todoItem" style={this.getStyle(id,selectID)} onClick={chooseTodoItem.bind(this,id)}>      
-                <img className="symbol" src={this.assignSymbol("")} alt="symbol" />
-                {title}
-                {/*
-                <p>
-                    <input type="checkbox"
-                    onChange={markComplete.bind(this, id)} />
+                {/*<img className="symbol" src={this.assignSymbol("")} alt="symbol" />*/}
+
+                <p className="checkboxContainer">
+                    {this.getChecked(id, markComplete)}
                     {' '}
-                    { title }
                 </p>
-                */}
+                { title }
+                <button className="delBtn" onClick={delTodo.bind(this,id)}> X </button>{' '}
             </div>
         )
     }
@@ -103,5 +116,6 @@ TodoItem.propTypes = {
     todo: PropTypes.object.isRequired,
     markComplete: PropTypes.func.isRequired,
 }
+
 
 export default TodoItem

@@ -13,6 +13,7 @@ class Todos extends Component {
                 selectID={this.props.selectID}
                 chooseTodoItem={this.props.chooseTodoItem}
                 markComplete={this.props.markComplete}
+                delTodo={this.props.delTodo}
             />
         ));
     }
